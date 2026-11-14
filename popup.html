@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tex</title>
+    <link rel="stylesheet" href="popup.css" />
+    <link rel="stylesheet" href="editor/editor.css" />
+    <link rel="stylesheet" href="preview/pdf-viewer.css" />
+  </head>
+  <body>
+    <header class="tex-header">
+      <div class="tex-brand-group">
+        <span class="tex-logo-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="24" height="24" fill="#000000" />
+            <path d="M5.5 6H18.5V9.2H17.1C16.8 7.8 16.1 7.3 14.6 7.3H13.1V16.8C13.1 17.7 13.5 18 14.8 18V19H9.2V18C10.5 18 10.9 17.7 10.9 16.8V7.3H9.4C7.9 7.3 7.2 7.8 6.9 9.2H5.5V6Z" fill="#FFFFFF" />
+          </svg>
+        </span>
+        <span class="tex-brand">Tex</span>
+      </div>
+
+      <div class="tex-header-controls">
+        <span id="status-indicator" class="tex-status">Idle</span>
+        <div class="tex-size-controls" title="Resize extension window">
+          <button type="button" class="tex-size-btn" data-size="sm">S</button>
+          <button type="button" class="tex-size-btn active" data-size="md">M</button>
+          <button type="button" class="tex-size-btn" data-size="lg">L</button>
+        </div>
+        <button id="expand-tab-btn" type="button" class="tex-btn-secondary" title="Open in dedicated tab">
+          Open Tab
+        </button>
+      </div>
+    </header>
+
+    <main id="tex-workspace" class="tex-workspace">
+      <section id="editor-pane" class="tex-pane tex-editor-pane" style="width: 50%;">
+        <div class="tex-toolbar">
+          <span class="tex-pane-title">LaTeX Input</span>
+          <div class="tex-actions">
+            <button id="clear-btn" type="button" class="tex-btn-secondary">Clear</button>
+            <button id="compile-btn" type="button" class="tex-btn-primary">Compile PDF</button>
+          </div>
+        </div>
+        <div id="editor-mount" class="tex-editor-mount"></div>
+        <div class="tex-editor-footer">
+          <span id="editor-stats">1 line · 0 chars</span>
+          <span>Ctrl/Cmd + Enter</span>
+        </div>
+      </section>
+
+      <div id="pane-resizer" class="tex-pane-resizer" title="Drag to resize editor and preview panes"></div>
+
+      <section id="output-pane" class="tex-pane tex-output-pane" style="width: 50%;">
+        <div id="output-mount" class="tex-output-mount"></div>
+      </section>
+    </main>
+
+    <div id="corner-resizer" class="tex-corner-resizer" title="Drag corner to resize extension"></div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

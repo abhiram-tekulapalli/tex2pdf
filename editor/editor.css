@@ -1,0 +1,39 @@
+.tex-editor-mount {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  background: #ffffff;
+}
+
+.tex-line-numbers {
+  width: 42px;
+  padding: 12px 8px;
+  background: #fafafa;
+  border-right: 1px solid #e5e5e5;
+  color: #737373;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  text-align: right;
+  user-select: none;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.tex-textarea {
+  flex: 1;
+  padding: 12px 14px;
+  border: none;
+  outline: none;
+  resize: none;
+  background: #ffffff;
+  color: #000000;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+  line-height: 1.6;
+  white-space: pre;
+  overflow: auto;
+  tab-size: 2;
+}

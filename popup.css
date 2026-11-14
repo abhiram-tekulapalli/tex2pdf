@@ -1,0 +1,225 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 720px;
+  height: 540px;
+  min-width: 480px;
+  min-height: 360px;
+  max-width: 800px;
+  max-height: 600px;
+  background-color: #ffffff;
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+body.tex-tab-mode,
+html.tex-tab-mode,
+html.tex-tab-mode body {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.tex-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 14px;
+  border-bottom: 1px solid #000000;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.tex-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tex-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #000000;
+}
+
+.tex-brand {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #000000;
+}
+
+.tex-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tex-status {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11.5px;
+  color: #525252;
+}
+
+.tex-size-controls {
+  display: inline-flex;
+  border: 1px solid #d4d4d4;
+  background: #ffffff;
+}
+
+.tex-size-btn {
+  background: #ffffff;
+  color: #525252;
+  border: none;
+  border-right: 1px solid #d4d4d4;
+  padding: 3px 7px;
+  font-size: 10.5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  cursor: pointer;
+}
+
+.tex-size-btn:last-child {
+  border-right: none;
+}
+
+.tex-size-btn:hover {
+  color: #000000;
+  background: #f5f5f5;
+}
+
+.tex-size-btn.active {
+  background: #000000;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.tex-workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.tex-pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.tex-pane-resizer {
+  width: 5px;
+  background: #e5e5e5;
+  cursor: col-resize;
+  flex-shrink: 0;
+  transition: background-color 0.12s ease;
+  position: relative;
+}
+
+.tex-pane-resizer:hover,
+.tex-pane-resizer.dragging {
+  background: #000000;
+}
+
+.tex-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fafafa;
+  flex-shrink: 0;
+}
+
+.tex-pane-title {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.tex-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tex-btn-primary {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
+  padding: 5px 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tex-btn-primary:hover {
+  background: #262626;
+}
+
+.tex-btn-secondary {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #d4d4d4;
+  padding: 4px 9px;
+  font-size: 11px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tex-btn-secondary:hover {
+  border-color: #000000;
+}
+
+.tex-editor-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 12px;
+  border-top: 1px solid #e5e5e5;
+  background: #fafafa;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  color: #737373;
+  flex-shrink: 0;
+}
+
+.tex-corner-resizer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 14px;
+  height: 14px;
+  cursor: nwse-resize;
+  background: linear-gradient(135deg, transparent 50%, #000000 50%);
+  opacity: 0.35;
+  z-index: 20;
+}
+
+.tex-corner-resizer:hover {
+  opacity: 1;
+}
+
+body.tex-tab-mode .tex-corner-resizer,
+body.tex-tab-mode .tex-size-controls {
+  display: none;
+}
