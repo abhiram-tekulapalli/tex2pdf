@@ -86,12 +86,17 @@ function renderPageOnCanvas(page, canvas, scale = 0.56) {
       ctx.stroke();
     } else if (op.kind === 'text') {
       const topY = page.heightPt - op.y;
-      const weight = op.font === 'bold' || op.font === 'boldItalic' ? '700' : '400';
+      const weight =
+        op.font === 'bold' || op.font === 'boldItalic'
+          ? '700'
+          : op.font === 'mono'
+          ? '600'
+          : '400';
       const style = op.font === 'italic' || op.font === 'boldItalic' ? 'italic' : 'normal';
       const family =
         op.font === 'mono'
-          ? 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace'
-          : 'Georgia, "Times New Roman", Times, serif';
+          ? '"Courier New", Courier, monospace'
+          : '"Times New Roman", Times, serif';
       ctx.font = `${style} ${weight} ${op.size}px ${family}`;
       if (op.color) {
         const [r, g, b] = op.color;
@@ -99,7 +104,18 @@ function renderPageOnCanvas(page, canvas, scale = 0.56) {
       } else {
         ctx.fillStyle = '#000000';
       }
-      ctx.fillText(op.text, op.x, topY);
+      const rawW = ctx.measureText(op.text).width;
+      const targetW =
+        op.font === 'mono' ? op.text.length * op.size * 0.525 : op.maxWidth;
+      if (rawW > 0 && targetW && (op.font === 'mono' || rawW > targetW)) {
+        ctx.save();
+        ctx.translate(op.x, topY);
+        ctx.scale(targetW / rawW, 1);
+        ctx.fillText(op.text, 0, 0);
+        ctx.restore();
+      } else {
+        ctx.fillText(op.text, op.x, topY);
+      }
     }
   }
   ctx.restore();
